@@ -7,7 +7,8 @@ def init():
     global model
     
     device = 0 if torch.cuda.is_available() else -1
-    model = pipeline('text2text-generation', model="s-1-n-t-h/bart-summarizer", framework='pt',device=device, use_auth_token='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')
+    model = pipeline('summarization', model="s-1-n-t-h/flan-t5", framework='pt',
+                     device=device, use_auth_token='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')
 
 # Inference is ran for every server call
 # Reference your preloaded global model variable here.
