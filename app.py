@@ -7,7 +7,7 @@ def init():
     global model
     
     device = 0 if torch.cuda.is_available() else -1
-    model = pipeline('summarization', model="facebook/bart-large-cnn", framework='pt',
+    model = pipeline('summarization', model="facebook/bart-large-cnn",
                      device=device, use_auth_token='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')
 
 # Inference is ran for every server call
