@@ -20,17 +20,15 @@ def inference(model_inputs:dict) -> dict:
     
     CLEANER = re.compile('<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});|\\r|\\n|\s{2,}')
     
-    #prompt = list(map(lambda x: re.sub(CLEANER,'',x),prompt))
-    
     # cleaning text beforing feeding to model
     if prompt != None:
-        prompt = list(map(lambda x: re.sub(CLEANER,'',x),prompt))
+        prompt = re.sub(CLEANER,'',prompt)
         
     if prompt == None:
         return {'message': "No prompt provided"}
     
     # Run the model
-    result = list(map(lambda x:model(x),prompt))
+    result = model(prompt)
 
     # Return the results as a dictionary
     return result
